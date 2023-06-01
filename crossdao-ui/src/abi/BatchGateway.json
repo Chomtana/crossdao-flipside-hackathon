@@ -1,0 +1,43 @@
+[
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          },
+          {
+            "internalType": "string[]",
+            "name": "urls",
+            "type": "string[]"
+          },
+          {
+            "internalType": "bytes",
+            "name": "callData",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct OffchainLookupCallData[]",
+        "name": "data",
+        "type": "tuple[]"
+      }
+    ],
+    "name": "query",
+    "outputs": [
+      {
+        "internalType": "bool[]",
+        "name": "failures",
+        "type": "bool[]"
+      },
+      {
+        "internalType": "bytes[]",
+        "name": "responses",
+        "type": "bytes[]"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
