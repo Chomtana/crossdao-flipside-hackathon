@@ -77,7 +77,7 @@ export const CONTRACTS: {[name: string]: ContractDefinition} = {
 
   // Axelar
   AxelarProposalController: {
-    address: '0xa881f34E2D321a2574d673BcA64391ECe88D86B4',
+    address: '0xa8816Acfb9248f9afe10132bf89F63504e0a77F9',
     abi: AxelarProposalControllerABI,
   },
   AxelarWhitelistRegistrarController: {

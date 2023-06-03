@@ -1,6 +1,6 @@
 import { AuthenticationStatus, RainbowKitAuthenticationProvider, createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
 import { createContext, useCallback, useEffect, useState } from 'react';
-import { SiweMessage } from 'siwe';
+import { SiweMessage } from 'src/utils/SiweMessage';
 import { useChainId } from 'wagmi';
 import { useAccount } from 'wagmi';
 
@@ -100,6 +100,10 @@ export function SiweAuthProvider({
   useEffect(() => {
     refreshMe()
   }, [address, chainId, isConnected])
+
+  if (!parseInt(import.meta.env.VITE_USE_SIWE)) {
+    return <>{children}</>
+  }
 
   return (
     <SiweAuthContext.Provider value={status}>

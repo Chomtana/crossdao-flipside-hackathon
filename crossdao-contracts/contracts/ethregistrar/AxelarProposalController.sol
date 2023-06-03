@@ -1,11 +1,15 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ~0.8.17;
+pragma solidity ^0.8.17;
 
 import {ENS} from "../registry/ENS.sol";
 import {ITextResolver} from "../resolvers/profiles/ITextResolver.sol";
 
 interface IProposalExecutable {
-    function execute(bytes32 proposalId, bytes32 conditionHash, bytes calldata data) external payable;
+    function execute(
+        bytes32 proposalId,
+        bytes32 conditionHash,
+        bytes calldata data
+    ) external payable;
 }
 
 error InvalidRecord(string key, string value);
@@ -54,10 +58,7 @@ contract AxelarProposalController {
     function calculateConditionHash(
         ProposalDetail calldata proposal
     ) public pure returns (bytes32) {
-        return
-            keccak256(
-                abi.encode(proposal.conditions)
-            );
+        return keccak256(abi.encode(proposal.conditions));
     }
 
     event ExecuteProposal(

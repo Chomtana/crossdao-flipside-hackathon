@@ -14,7 +14,6 @@ interface ProposalConditionProps extends IAxelarProposalCondition {
   chainId: number;
   sourceChainId?: number;
   index: number;
-  key: any;
   onPassed: any;
 }
 
@@ -26,7 +25,6 @@ function ProposalConditionInner({
   chainId,
   sourceChainId,
   index,
-  key,
   onPassed,
 }: ProposalConditionProps) {
   const [attested, setAttested] = useState("");
@@ -130,7 +128,6 @@ function ProposalCondition({
   value,
   chainId,
   index,
-  key,
   onPassed,
 }: ProposalConditionProps) {
   const [sourceChainId, setSourceChainId] = useState(0);
@@ -161,7 +158,6 @@ function ProposalCondition({
       chainId={chainId}
       sourceChainId={sourceChainId}
       index={index}
-      key={key}
       onPassed={onPassed}
     />
   );

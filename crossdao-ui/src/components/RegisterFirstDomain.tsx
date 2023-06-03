@@ -192,6 +192,13 @@ export default function RegisterFirstDomain() {
       setStep(2)
 
       await wait(75000)
+
+      if (window.opener) {
+        window.opener.postMessage('optidomains:refresh')
+        setTimeout(() => window.close(), 500);
+      } else {
+        window.location.reload()
+      }
     } catch (err) {
       console.error(err)
       message.error('Domain registration failed!')

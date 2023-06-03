@@ -1,4 +1,3 @@
-import './polyfills.ts'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
@@ -24,11 +23,13 @@ import {
 
 import { publicProvider } from 'wagmi/providers/public';
 import { baseGoerli, optimismGoerli } from 'viem/chains';
-import { SiweAuthProvider } from './components/providers/siwe-adapter.tsx';
+// import { SiweAuthProvider } from './components/providers/siwe-adapter.tsx';
 import SocialOracleCallback from './social-oracle-callback.tsx';
 import { AptosProvider } from './components/providers/aptos-adapter.tsx';
 import { AntdAlertProvider } from './components/providers/antd-alert.tsx';
 import ProposalPage from './components/axelar-flipside/ProposalPage.tsx';
+import { SiweAuthProvider } from './components/providers/siwe-adapter.tsx';
+import RegisterFlipsidePage from './components/axelar-flipside/RegisterFlipsidePage.tsx';
 
 const { chains, publicClient } = configureChains(
   [optimismGoerli, baseGoerli],
@@ -62,12 +63,16 @@ const router = createBrowserRouter([
     path: "/proposal/:proposalId",
     element: <ProposalPage />,
   },
+  {
+    path: "/register",
+    element: <RegisterFlipsidePage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      {/* <SiweAuthProvider> */}
+      <SiweAuthProvider>
         <RainbowKitProvider chains={chains}>
           <AptosProvider>
             <SuiWalletProvider autoConnect={false}>
@@ -77,7 +82,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             </SuiWalletProvider>
           </AptosProvider>
         </RainbowKitProvider>
-      {/* </SiweAuthProvider> */}
+      </SiweAuthProvider>
     </WagmiConfig>
   </React.StrictMode>,
 )

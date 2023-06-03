@@ -29,11 +29,19 @@ export default function ProposalSection() {
 
   return (
     <section className="gallery container relative z-10 mx-auto py-10 px-6" id="proposals">
-      <div className='flex justify-between'>
+      <div className='flex justify-between mb-4'>
         <h3 className="mb-4 text-center text-3xl font-semibold underline decoration-amber-500/80 lg:text-left xl:text-4xl">Proposals</h3>
 
         <Button type="primary" size="large" onClick={() => setShowNewProposal(true)}>New Proposal</Button>
       </div>
+
+      {proposals.length == 0 && (
+        <div className="flex flex-col items-center text-lg">
+          <div className="mb-4">You don't have any proposal</div>
+
+          {/* <Button type="primary" size="large" onClick={() => setShowNewProposal(true)}>New Proposal</Button> */}
+        </div>
+      )}
       
       <NewProposalDialog show={showNewProposal} onClose={() => {
         setShowNewProposal(false)

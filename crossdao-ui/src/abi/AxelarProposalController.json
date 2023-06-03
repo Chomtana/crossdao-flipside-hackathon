@@ -28,6 +28,11 @@
   },
   {
     "inputs": [],
+    "name": "ProposalExecuted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "ProposalExpired",
     "type": "error"
   },
@@ -55,6 +60,76 @@
     ],
     "name": "ExecuteProposal",
     "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "expiration",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bytes32",
+                "name": "node",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "string",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct AxelarProposalController.ProposalCondition[]",
+            "name": "conditions",
+            "type": "tuple[]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IProposalExecutable",
+                "name": "target",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct AxelarProposalController.ProposalAction[]",
+            "name": "actions",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct AxelarProposalController.ProposalDetail",
+        "name": "proposal",
+        "type": "tuple"
+      }
+    ],
+    "name": "calculateConditionHash",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
   },
   {
     "inputs": [
@@ -201,6 +276,25 @@
     "name": "executeProposal",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "executedTimestamp",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   }
 ]

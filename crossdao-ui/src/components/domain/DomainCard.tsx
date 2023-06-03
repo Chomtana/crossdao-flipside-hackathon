@@ -22,14 +22,14 @@ export function DomainCard({ domainName, domainDisplayName, domainChainId, key, 
   const [socialProfiles, setSocialProfiles] = useState<SocialProfileSimple[]>([])
 
   useEffect(() => {
-    if (chain) {
+    if (domainChainId) {
       const promises = [];
 
       promises.push(getAssociatedSocialProfiles(node, domainChainId).then(profiles => setSocialProfiles(profiles)))
 
       Promise.all(promises).then(() => setLoading(false))
     }
-  }, [node, chain])
+  }, [node, domainChainId])
 
   const socialProviderList = [
     'discord',
@@ -61,7 +61,7 @@ export function DomainCard({ domainName, domainDisplayName, domainChainId, key, 
       <div className="grid grid-cols-2">
         <div className="mt-4">
           {socialProviderList.map(provider => (
-            <div className='mb-2'>
+            <div className='mb-2' key={provider}>
               <DomainSocialRecordFromProfiles provider={provider} profiles={socialProfiles} loading={loading} />
             </div>
           ))}

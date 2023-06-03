@@ -12,6 +12,8 @@
   "dependencies": {
     "@aptos-labs/wallet-adapter-ant-design": "^1.0.5",
     "@aptos-labs/wallet-adapter-react": "^1.1.0",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@martianwallet/aptos-wallet-adapter": "^0.0.4",
     "@nightlylabs/aptos-wallet-adapter-plugin": "^0.2.12",
     "@openblockhq/aptos-wallet-adapter": "^0.1.5",
@@ -33,7 +35,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "siwe": "^2.1.4",
+    "rollup-plugin-polyfill-node": "^0.12.0",
     "sort-by": "^1.2.0",
     "styled-components": "^5.3.11",
     "uuid": "^9.0.0",

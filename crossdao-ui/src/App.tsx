@@ -4,9 +4,20 @@ import RegisterFirstDomain from './components/RegisterFirstDomain'
 import DomainList from './components/domain/DomainList'
 import { useAccount } from 'wagmi'
 import ProposalSection from './components/axelar-flipside/ProposalSection'
+import { useEffect } from 'react'
 
 function App() {
   const { address } = useAccount()
+
+  useEffect(() => {
+    window.addEventListener("message", (event) => {
+      if (event.origin != window.location.origin) return;
+
+      if (typeof event.data === "string" && event.data == 'optidomains:refresh') {
+        window.location.reload()
+      }
+    })
+  }, [])
 
   return (
     <>
@@ -126,34 +137,34 @@ function App() {
                     </svg>
                   </div>
                 </a> */}
-                <a href="https://zonic.app/collection/boredtown" target="_blank">
+                <div onClick={() => window.open(import.meta.env.VITE_CROSSDAO_REGISTER_DOMAIN + "/register")} className='hover:cursor-pointer'>
                   <div className="flex w-fit space-x-2 rounded-2xl bg-teal-600 px-4 py-3 font-semibold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:-translate-y-[1px] hover:bg-teal-700">
                     <span>Register Your DAO</span> 
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 448 512" height={22} width={22} xmlns="http://www.w3.org/2000/svg">
                       <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
                     </svg>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
             <div className="ml-10 flex justify-center">
               <div className="relative -skew-y-3 mt-24 z-10 skew-x-6">
                 <div className="h-[15rem] w-[11rem] rounded-2xl bg-gray-900 shadow-xl xl:h-[23rem] xl:w-[18rem]">
-                  <div className="relative h-[11rem] w-full xl:h-[18rem]">
+                  <div className="relative h-[11rem] w-full xl:h-[18rem] bg-gray-400 rounded-t-2xl">
                     <span style={{boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}>
-                      <img alt="Top Card" src="/images/boredtown.gif" decoding="async" data-nimg="fill" className="heroCard rounded-t-2xl" style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%', objectFit: 'cover'}} />
+                      <img alt="Top Card" src="/images/flipside.svg" decoding="async" data-nimg="fill" className="heroCard rounded-t-2xl" style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '60%', maxWidth: '60%', minHeight: '60%', maxHeight: '60%', objectFit: 'cover'}} />
                     </span>
                   </div>
                   <div className="flex h-[4rem] w-full items-center justify-between px-4 xl:h-[5rem]">
                     <div className="flex items-center space-x-3">
                       <div>
-                        <p className="text-xs text-gray-300 xl:text-sm">Bored Town</p>
-                        <p className="text-md font-medium text-indigo-300 xl:text-xl">bored.town</p>
+                        <p className="text-xs text-gray-300 xl:text-sm">Flipside</p>
+                        <p className="text-md font-medium text-indigo-300 xl:text-xl">flipside.axl</p>
                       </div>
                     </div>
-                    <a target="_blank" href="https://zonic.app/collection/boredtown">
+                    {/* <a target="_blank" href="https://zonic.app/collection/boredtown">
                       <div className="xl:text-md hidden w-fit space-x-2 rounded-2xl bg-teal-600 px-2 py-3 text-sm font-semibold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:bg-teal-700 xl:flex xl:px-4">Buy Now</div>
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>
@@ -161,14 +172,14 @@ function App() {
                 <div className="h-[15rem] w-[11rem] rounded-2xl bg-gray-900 shadow-xl xl:h-[23rem] xl:w-[18rem]">
                   <div className="relative h-[11rem] w-full xl:h-[18rem]">
                     <span style={{boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}>
-                      <img alt="Back Card" src="/images/zkalien.gif" decoding="async" data-nimg="fill" className="heroCard rounded-t-2xl" style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%', objectFit: 'cover'}} />
+                      <img alt="Back Card" src="/infinity-op-circle.png" decoding="async" data-nimg="fill" className="heroCard rounded-t-2xl" style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, boxSizing: 'border-box', padding: 0, border: 'none', margin: 'auto', display: 'block', width: 0, height: 0, minWidth: '70%', maxWidth: '70%', minHeight: '70%', maxHeight: '70%', objectFit: 'cover'}} />
                     </span>
                   </div>
                   <div className="flex h-[4rem] w-full items-center justify-end px-4 xl:h-[5rem]">
                     <div className="flex items-center space-x-3">
                       <div>
-                        <p className="text-xs text-gray-300 xl:text-sm text-right">Zkalien</p>
-                        <p className="text-md font-medium text-indigo-300 xl:text-xl">zkalien.town</p>
+                        <p className="text-xs text-gray-300 xl:text-sm text-right">Opti.Domains</p>
+                        <p className="text-md font-medium text-indigo-300 xl:text-xl">optidomains.axl</p>
                       </div>
                     </div>
                   </div>
@@ -183,13 +194,25 @@ function App() {
             <RegisterFirstDomain />
           </section> */}
 
-          <div className='flex justify-center'>
+          {/* <div className='flex justify-center'>
             <div style={{maxWidth: 600}}>
               <h3 className="mb-4 text-center text-3xl font-semibold underline decoration-amber-500/80 xl:text-4xl">Register Domain</h3>
 
               <RegisterFirstDomain />
             </div>
-          </div>
+          </div> */}
+
+          {!address && (
+            <section className="gallery container relative z-10 mx-auto py-10 px-6" id="connectwallet">
+              <h3 className="mb-4 text-center text-3xl font-semibold underline decoration-amber-500/80 xl:text-4xl">Connect Wallet</h3>
+
+              <div className='flex flex-col items-center mt-6'>
+                <div className='mb-5 text-lg'>Please connect your wallet to get started</div>
+
+                <ConnectButton />
+              </div>
+            </section>
+          )}
 
           {address &&
             <section className="gallery container relative z-10 mx-auto py-10 px-6" id="mydomains">
@@ -227,7 +250,7 @@ function App() {
             </div>
           </section> */}
 
-          <section id="roadmap" className="container relative mx-auto py-12 px-6">
+          <section id="roadmap" className="container relative mx-auto py-12 px-6 hidden">
             <h3 className="mb-8 text-center text-3xl font-semibold underline decoration-amber-500/80 lg:text-left xl:text-4xl">Use Cases</h3>
             <div className="relative flex flex-col">
               <div className="absolute left-[50%] z-40 h-full w-[2px] rounded-full bg-indigo-300/60 blur-sm lg:left-[44px]" />
@@ -316,18 +339,18 @@ function App() {
           </section> */}
         </main>
         <div className="bg-transparent py-10 text-gray-300">
-          <div className="container mx-auto flex items-center justify-between">
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
             <div className="flex flex-col">
-              <div className="mb-3 text-lg">Bored Town Social</div>
+              <div className="mb-3 text-lg">CrossDAO By Chomtana @ 2023</div>
 
-              <div className="flex items-center space-x-4">
-                <a href="/#">
+              <div className="flex items-center justify-center md:justify-start space-x-4">
+                {/* <a href="/#">
                   <div className="rounded-full bg-gray-900/40 p-2 transition duration-300 hover:scale-110">
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 640 512" height={28} width={28} xmlns="http://www.w3.org/2000/svg">
                       <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z" />
                     </svg>
                   </div>
-                </a>
+                </a> */}
                 {/* <a href="/#">
                   <div className="rounded-full bg-gray-900/40 p-2 transition duration-300 hover:scale-110">
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 448 512" height={28} width={28} xmlns="http://www.w3.org/2000/svg">
@@ -335,7 +358,7 @@ function App() {
                     </svg>
                   </div>
                 </a> */}
-                <a href="/#">
+                <a href="https://twitter.com/Chomtana">
                   <div className="rounded-full bg-gray-900/40 p-2 transition duration-300 hover:scale-110">
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 512 512" height={28} width={28} xmlns="http://www.w3.org/2000/svg">
                       <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
@@ -345,11 +368,11 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end mt-6">
               <div className="mb-3 text-lg">Opti.Domains Social</div>
 
-              <div className="flex items-center space-x-4">
-                <a href="/#">
+              <div className="flex items-center justify-center md:justify-end space-x-4 w-full">
+                <a href="https://discord.gg/aeu6ZMds">
                   <div className="rounded-full bg-gray-900/40 p-2 transition duration-300 hover:scale-110">
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 640 512" height={28} width={28} xmlns="http://www.w3.org/2000/svg">
                       <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z" />
@@ -363,7 +386,7 @@ function App() {
                     </svg>
                   </div>
                 </a> */}
-                <a href="/#">
+                <a href="https://twitter.com/optidomains">
                   <div className="rounded-full bg-gray-900/40 p-2 transition duration-300 hover:scale-110">
                     <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 512 512" height={28} width={28} xmlns="http://www.w3.org/2000/svg">
                       <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
