@@ -6,6 +6,12 @@ Let DAO from multiple chains jointly vote on proposals and post the proof to any
 * Video: https://www.youtube.com/watch?v=YIUDelwNifI
 * Roadmap: https://bit.ly/crossdao-roadmap-flipside
 
+## Screenshot
+
+<img width="1207" alt="image" src="https://user-images.githubusercontent.com/4103490/243063904-6f44fee1-59ef-4285-9235-ba16515dae71.png">
+
+<img width="1163" alt="image" src="https://user-images.githubusercontent.com/4103490/243064070-cbf2c6a1-12ea-4946-a60f-20f25fe8cd06.png">
+
 ## What is CrossDAO?
 
 CrossDAO is an innovative service provider designed to allow Decentralized Autonomous Organizations (DAOs) from different blockchains to jointly vote on proposals and post proof of voting attestations to any DAO forum such as Optimism Governance and ENS DAO forum. This cross-chain collaboration has been a major challenge in the blockchain space, and CrossDAO leverages advanced technology to overcome it.
