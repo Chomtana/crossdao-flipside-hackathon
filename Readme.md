@@ -4,7 +4,7 @@ Let DAO from multiple chains jointly vote on proposals and post the proof to any
 
 * Live DApp: https://crossdao.opti.domains/
 * Video: https://www.youtube.com/watch?v=YIUDelwNifI
-* Roadmap: 
+* Roadmap: https://bit.ly/crossdao-roadmap-flipside
 
 ## What is CrossDAO?
 
